@@ -1,17 +1,136 @@
-import { all, put, takeEvery, delay, takeLatest } from "redux-saga/effects";
-
-//yield fork - non blocking call
-
-// const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-function* incrementAsync() {
-  yield delay(1000);
-  yield put({ type: "increment" });
+import { all, put, takeLatest, call, select } from "redux-saga/effects";
+import {
+  fetchProducts,
+  removeItem,
+  updateCart,
+  updateProducts,
+  updateTotalAction,
+} from "./actions";
+function* clearCart() {
+  try {
+    yield put(updateCart([]));
+    yield put(updateTotalAction);
+    yield put(fetchProducts);
+  } catch (ex) {
+    console.log(ex);
+  }
 }
 
-function* watchIncrementAdync() {
-  yield takeEvery("increment_async", incrementAsync);
+function* addItemToCart(id) {
+  try {
+    let tempProducts = yield select((state) => state.products);
+    let tempCart = yield select((state) => state.cart);
+
+    const [product] = tempProducts.filter((item) => item.id === id);
+
+    product.inCart = true;
+    product.count = 1;
+    const price = product.price;
+    product.total = price;
+
+    yield put(updateCart([...tempCart, product]));
+    yield put(updateProducts([...tempProducts]));
+    yield put(updateTotalAction);
+  } catch (ex) {
+    console.log(ex);
+  }
 }
 
+function* removeItemInCart(id) {
+  try {
+    let tempProducts = yield select((state) => state.products);
+    let tempCart = yield select((state) => state.cart);
+
+    tempCart = tempCart.filter((item) => item.id !== id);
+
+    for (let index = 0; index < tempProducts.length; index++) {
+      const item = tempProducts[index];
+      if (item.id === id) {
+        item.inCart = false;
+        item.count = 0;
+        item.total = 0;
+        break;
+      }
+    }
+
+    yield put(updateCart, tempCart);
+    yield put(updateProducts, tempProducts);
+    yield put(updateTotalAction);
+  } catch (ex) {
+    console.log(ex);
+  }
+}
+function* updateTotal() {
+  try {
+    let subtotal = 0;
+    const tempCart = yield select((state) => state.cart);
+    tempCart.cart.map((item) => (subtotal += item.total));
+    const tempTax = subtotal * 0.1;
+    const tax = parseFloat(tempTax.toFixed(2));
+    const total = subtotal + tax;
+    yield put(updateTotalAction, {
+      cartSubtotal: subtotal,
+      cartTax: tax,
+      cartTotal: total,
+    });
+  } catch (ex) {
+    console.log(ex);
+  }
+}
+function* quantityUpdate(id, mode) {
+  try {
+    const tempCart = yield select((state) => state.cart);
+
+    for (let i = 0; tempCart.length; i++) {
+      const product = tempCart[i];
+      if (product.id === id) {
+        if (mode === "Increment") {
+          product.count = product.count + 1;
+        } else {
+          product.count = product.count - 1;
+          if (!product.count) {
+            yield put(removeItem, id);
+          }
+        }
+        product.total = product.count * product.price;
+        break;
+      }
+    }
+
+    yield put(updateCart, tempCart);
+    yield put(updateTotalAction);
+  } catch (ex) {
+    console.log(ex);
+  }
+}
+
+function* watchQuantityUpdate() {
+  yield takeLatest("quantity_update", ({ id, mode }) =>
+    quantityUpdate(id, mode)
+  );
+}
+
+function* watchClearCart() {
+  yield takeLatest("clear_cart", clearCart);
+}
+
+function* watchRemoveItem() {
+  yield takeLatest("remove_item_cart", ({ payload }) =>
+    removeItemInCart(payload)
+  );
+}
+function* watchAddItem() {
+  yield takeLatest("add_to_cart", ({ payload }) => addItemToCart(payload));
+}
+function* watchUpdateTotal() {
+  yield takeLatest("update_total", updateTotal);
+}
 export default function* rootSaga() {
-  yield all([watchIncrementAdync()]);
+  yield all([
+    watchQuantityUpdate(),
+    watchRemoveItem(),
+    watchUpdateTotal(),
+    watchAddItem(),
+    watchClearCart(),
+  ]);
 }

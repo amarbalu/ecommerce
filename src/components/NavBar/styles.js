@@ -24,3 +24,9 @@ export const ButtonContainer = styled.button`
     padding: 0;
   }
 `;
+
+export const Icon = styled("i")`
+  span {
+    font-size: 0.6rem;
+  }
+`;

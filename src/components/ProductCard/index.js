@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addtocartAction } from "../../actions";
 
 const Product = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <div className="product col-10 mx-auto col-md-6 col-lg-3 my-3">
       <div
@@ -29,10 +31,7 @@ const Product = ({ product }) => {
         <button
           className="btn cart-btn"
           disabled={product.inCart ? true : false}
-          onClick={() => {
-            // value.addToCart(product.id);
-            // value.openModal(product.id);
-          }}
+          onClick={() => dispatch(addtocartAction(product.id))}
         >
           {product.inCart ? (
             <p className="text-capitalize mb-0" disabled>

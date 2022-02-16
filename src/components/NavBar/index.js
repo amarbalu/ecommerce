@@ -1,8 +1,12 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { ButtonContainer, Container } from "./styles";
+import { toggleLoginModal } from "../../actions";
+import { ButtonContainer, Container, Icon } from "./styles";
 const NavBarMenu = () => {
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
   return (
-    <Container className="navbar navbar-expand-lg navbar-light bg-light px-sm-5">
+    <Container className="navbar navbar-expand-lg navbar-light bg-light px-sm-5 fixed-top">
       <div className="container-fluid">
         <Link to="/">
           <img
@@ -29,6 +33,7 @@ const NavBarMenu = () => {
                 className="nav-link"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
+                onClick={() => dispatch(toggleLoginModal())}
               >
                 Sign In
               </div>
@@ -36,7 +41,11 @@ const NavBarMenu = () => {
           </div>
           <Link to="/cart">
             <ButtonContainer className="cart-icon">
-              <i class="bi bi-bag" />
+              <Icon className="bi bi-bag position-relative">
+                <span className="position-absolute bottom-0 start-80 translate-middle p-1 bg-dark text-light rounded-circle">
+                  {count}
+                </span>
+              </Icon>
               <span className="d-md-none d-xs-block ms-2 title">
                 My Shopping Cart
               </span>
