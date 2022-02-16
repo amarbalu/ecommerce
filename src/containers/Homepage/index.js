@@ -1,13 +1,13 @@
 import { Fragment } from "react";
 import NavBar from "../../components/NavBar";
-import ProductCard from "../../components/ProductCard";
 import Login from "../Login";
+import ProductList from "../../components/ProductList";
 
 const Homepage = () => {
   return (
     <Fragment>
       <NavBar />
-      {/* <ProductCard /> */}
+      <ProductList />
       <Login />
     </Fragment>
   );

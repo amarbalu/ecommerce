@@ -1,5 +1,7 @@
+import { storeProducts } from "./data";
 const initialState = {
   count: 0,
+  products: storeProducts,
 };
 
 const reducer = (state = initialState, action) => {
