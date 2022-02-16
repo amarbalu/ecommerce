@@ -1,8 +1,15 @@
-export default function Homepage() {
+import { Fragment } from "react";
+import NavBar from "../../components/NavBar";
+import ProductCard from "../../components/ProductCard";
+import Login from "../Login";
+
+const Homepage = () => {
   return (
-    <div>
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <Fragment>
+      <NavBar />
+      {/* <ProductCard /> */}
+      <Login />
+    </Fragment>
   );
-}
+};
+export default Homepage;
