@@ -2,26 +2,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import App from "./App";
-import createSagaMiddleware from "redux-saga";
-import { reducer, initialState } from "./reducer";
-import rootSaga from "./saga";
 import reportWebVitals from "./reportWebVitals";
-import { ProductProvider } from "./components/ProductCard/Context";
+import configureStore from "./configureStore";
 
-const saga = createSagaMiddleware();
-const store = createStore(reducer, initialState, applyMiddleware(saga));
-saga.run(rootSaga);
+const store = configureStore;
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
-    <ProductProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ProductProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </StrictMode>,
   rootElement
 );

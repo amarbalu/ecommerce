@@ -1,28 +1,38 @@
 import React from "react";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
-import { createBrowserHistory } from "history";
 import { routes } from "./routes";
 import PrivateRoute from "./components/PrivateRoute";
+import NavBar from "./components/NavBar";
+import styled from "styled-components";
 
-const history = createBrowserHistory();
+const Container = styled("div")`
+  &.app-container {
+    position: relative;
+    top: 30px;
+  }
+`;
+
 const App = () => {
   return (
     <div className="App">
       <React.Fragment>
         <BrowserRouter>
-          <Routes>
-            {routes.map((props) =>
-              props.path === "/cartpage" ? (
-                <Route
-                  path={props.path}
-                  element={<PrivateRoute>{props.component}</PrivateRoute>}
-                />
-              ) : (
-                <Route path={props.path} element={props.component} />
-              )
-            )}
-            <Route path="*" element={<Navigate to="/homepage" replace />} />
-          </Routes>
+          <NavBar />
+          <Container className="app-container">
+            <Routes>
+              {routes.map((props) =>
+                props.path === "/checkout" ? (
+                  <Route
+                    path={props.path}
+                    element={<PrivateRoute>{props.component}</PrivateRoute>}
+                  />
+                ) : (
+                  <Route path={props.path} element={props.component} />
+                )
+              )}
+              <Route path="*" element={<Navigate to="/homepage" replace />} />
+            </Routes>
+          </Container>
         </BrowserRouter>
       </React.Fragment>
     </div>
