@@ -31,7 +31,7 @@ const NavBarMenu = () => {
         <Link to="/cart">
           <ButtonContainer className="cart-icon">
             <Icon className="bi bi-bag position-relative ms-2">
-              <span className="position-absolute bottom-0 start-80 translate-middle p-1 bg-dark text-light rounded-circle">
+              <span className="badge position-absolute bottom-0 start-80 translate-middle p-1  text-light rounded-circle">
                 {count}
               </span>
             </Icon>

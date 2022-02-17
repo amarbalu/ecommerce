@@ -41,10 +41,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    case "update_totalAction":
+    case "update_total_result":
       return {
         ...state,
-        ...action.payload,
+        cartSubtotal: action.subtotal,
+        cartTax: action.tax,
+        cartTotal: action.total,
       };
     default:
       return state;

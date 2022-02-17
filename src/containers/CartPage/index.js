@@ -8,14 +8,21 @@ import { useSelector } from "react-redux";
 
 export default function CartPage() {
   const cart = useSelector((state) => state.cart);
+  const cartSubtotal = useSelector((state) => state.cartSubtotal);
+  const cartTotal = useSelector((state) => state.cartTotal);
+  const cartTax = useSelector((state) => state.cartTax);
   return (
     <section>
       {cart.length ? (
         <React.Fragment>
           <Title name="Your" title="cart"></Title>
-          <CartColumn />
+          <CartColumn cart={cart} />
           <CartList cart={cart} />
-          <CartTotal cart={cart} />
+          <CartTotal
+            cartTotal={cartTotal}
+            cartSubtotal={cartSubtotal}
+            cartTax={cartTax}
+          />
         </React.Fragment>
       ) : (
         <EmptyCart />

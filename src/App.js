@@ -8,7 +8,7 @@ import styled from "styled-components";
 const Container = styled("div")`
   &.app-container {
     position: relative;
-    top: 30px;
+    top: 82px;
   }
 `;
 

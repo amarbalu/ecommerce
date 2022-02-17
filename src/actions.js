@@ -26,8 +26,14 @@ const updateProducts = (payload) => ({
   payload,
 });
 const updateTotalAction = (payload) => ({
-  type: "update_totalAction",
+  type: "update_total",
   payload,
+});
+const updateTotalResult = (subtotal, tax, total) => ({
+  type: "update_total_result",
+  subtotal,
+  tax,
+  total,
 });
 const removeItem = (payload) => ({
   type: "remove_item_cart",
@@ -43,6 +49,7 @@ export {
   updateProducts,
   toggleLoginModal,
   updateTotalAction,
+  updateTotalResult,
   removeItem,
   fetchProducts,
   clearCartItems,

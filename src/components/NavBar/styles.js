@@ -29,4 +29,7 @@ export const Icon = styled("i")`
   span {
     font-size: 0.6rem;
   }
+  > .badge {
+    background: #4fcdcc;
+  }
 `;

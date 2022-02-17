@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addtocartAction } from "../../actions";
+import { CartContainer } from "./styles";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
   return (
-    <div className="product col-10 mx-auto col-md-6 col-lg-3 my-3">
+    <CartContainer className="product col-xs-3  col-md-6 col-lg-3  ">
       <div
-        className="card"
+        className="card my-3 mx-3"
         onClick={() => {
           //   value.handleDetail(product.id);
         }}
@@ -35,16 +36,18 @@ const Product = ({ product }) => {
         >
           {product.inCart ? (
             <p className="text-capitalize mb-0" disabled>
-              {""}In Cart
+              <i class="bi bi-cart-check-fill"></i>
+              {/* In Cart */}
             </p>
           ) : (
             <span>
-              <i className="fas fa-plus-circle me-1 plus-icon"></i> Add To Cart
+              <i class="bi bi-cart-plus-fill"></i>
+              {/* Add To Cart */}
             </span>
           )}
         </button>
       </div>
-    </div>
+    </CartContainer>
   );
 };
 

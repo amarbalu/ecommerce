@@ -44,7 +44,7 @@ export const ProductListContainer = styled("div")`
     justify-content: center;
     z-index: 9;
     color: #f3f3f3;
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     opacity: 0;
     -webkit-transition: all 200ms linear;
@@ -58,8 +58,9 @@ export const ProductListContainer = styled("div")`
   .product .cart-btn {
     -webkit-transition: all 100ms linear;
     transition: all 100ms linear;
-    background-color: #ffa400;
+    background-color: #51d4d3;
     opacity: 0.9;
+    font-size: 20px;
   }
 
   .product .cart-btn .plus-icon {

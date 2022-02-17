@@ -5,11 +5,12 @@ import {
   updateCart,
   updateProducts,
   updateTotalAction,
+  updateTotalResult,
 } from "./actions";
 function* clearCart() {
   try {
     yield put(updateCart([]));
-    yield put(updateTotalAction);
+    yield put(updateTotalAction());
     yield put(fetchProducts);
   } catch (ex) {
     console.log(ex);
@@ -30,7 +31,7 @@ function* addItemToCart(id) {
 
     yield put(updateCart([...tempCart, product]));
     yield put(updateProducts([...tempProducts]));
-    yield put(updateTotalAction);
+    yield put(updateTotalAction());
   } catch (ex) {
     console.log(ex);
   }
@@ -55,7 +56,7 @@ function* removeItemInCart(id) {
 
     yield put(updateCart, tempCart);
     yield put(updateProducts, tempProducts);
-    yield put(updateTotalAction);
+    yield put(updateTotalAction());
   } catch (ex) {
     console.log(ex);
   }
@@ -64,15 +65,11 @@ function* updateTotal() {
   try {
     let subtotal = 0;
     const tempCart = yield select((state) => state.cart);
-    tempCart.cart.map((item) => (subtotal += item.total));
+    tempCart.map((item) => (subtotal += item.total));
     const tempTax = subtotal * 0.1;
     const tax = parseFloat(tempTax.toFixed(2));
     const total = subtotal + tax;
-    yield put(updateTotalAction, {
-      cartSubtotal: subtotal,
-      cartTax: tax,
-      cartTotal: total,
-    });
+    yield put(updateTotalResult(subtotal, tax, total));
   } catch (ex) {
     console.log(ex);
   }
@@ -98,7 +95,7 @@ function* quantityUpdate(id, mode) {
     }
 
     yield put(updateCart, tempCart);
-    yield put(updateTotalAction);
+    yield put(updateTotalAction());
   } catch (ex) {
     console.log(ex);
   }

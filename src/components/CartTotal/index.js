@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CartColumn({ cart }) {
-  const { cartSubtotal, cartTax, cartTotal, clearCart } = cart;
+export default function CartColumn({
+  cartSubtotal,
+  cartTax,
+  cartTotal,
+  clearCart,
+}) {
   return (
     <React.Fragment>
       <div className="container">
