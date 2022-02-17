@@ -4,6 +4,7 @@ import { routes } from "./routes";
 import PrivateRoute from "./components/PrivateRoute";
 import NavBar from "./components/NavBar";
 import styled from "styled-components";
+import Login from "./containers/Login";
 
 const Container = styled("div")`
   &.app-container {
@@ -33,6 +34,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/homepage" replace />} />
             </Routes>
           </Container>
+          <Login />
         </BrowserRouter>
       </React.Fragment>
     </div>

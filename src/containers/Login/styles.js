@@ -6,6 +6,23 @@ export const Modalheader = styled("div")`
   }
 `;
 
+export const ModalContainer = styled("div")`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+
+  #modal {
+    background: #f3f3f3;
+  }
+`;
+
 export const Modalbody = styled("div")`
   .login-page {
     background-color: #e5e7ed;

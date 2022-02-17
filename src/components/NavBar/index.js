@@ -20,8 +20,6 @@ const NavBarMenu = () => {
           <Link to="/" onClick={(e) => e.preventDefault()} className="link">
             <div
               className="nav-link"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
               onClick={() => dispatch(toggleLoginModal())}
             >
               Sign In
