@@ -34,9 +34,7 @@ export const Modalbody = styled("div")`
   }
   .login-block {
     background-color: #fff;
-    padding: 60px;
-    -webkit-box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
     text-align: center;
     border-radius: 5px;
   }
@@ -48,8 +46,6 @@ export const Modalbody = styled("div")`
   }
   .login-block h1 {
     font-size: 22px;
-    margin-bottom: 60px;
-    margin-top: 40px;
   }
   .login-block h6 {
     font-size: 11px;
