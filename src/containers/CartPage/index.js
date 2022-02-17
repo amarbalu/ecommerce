@@ -15,14 +15,16 @@ export default function CartPage() {
     <section>
       {cart.length ? (
         <React.Fragment>
-          <Title name="Your" title="cart"></Title>
-          <CartColumn cart={cart} />
-          <CartList cart={cart} />
-          <CartTotal
-            cartTotal={cartTotal}
-            cartSubtotal={cartSubtotal}
-            cartTax={cartTax}
-          />
+          <div className="container-fluid">
+            <Title name="Your" title="cart"></Title>
+            <CartColumn cart={cart} />
+            <CartList cart={cart} />
+            <CartTotal
+              cartTotal={cartTotal}
+              cartSubtotal={cartSubtotal}
+              cartTax={cartTax}
+            />
+          </div>
         </React.Fragment>
       ) : (
         <EmptyCart />
