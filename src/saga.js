@@ -9,6 +9,17 @@ import {
   setloginDetails,
 } from "./actions";
 import { loginCredentials } from "./data";
+function* fetchFilterList() {
+  const filters = [];
+  let tempProducts = yield select((state) => state.products);
+  const filterAttrs = ["color", "person", "type"];
+  tempProducts.reduce((total, current) => {
+    if (current) {
+    }
+  }, {});
+  try {
+  } catch (ex) {}
+}
 function* clearCart() {
   try {
     yield put(updateCart([]));
