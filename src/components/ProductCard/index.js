@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addtocartAction } from "../../actions";
 import { CartContainer } from "./styles";
@@ -8,7 +7,7 @@ import { CartContainer } from "./styles";
 const Product = ({ product }) => {
   const dispatch = useDispatch();
   return (
-    <CartContainer className=" row product col-xs-2  col-md-6 col-lg-3  ">
+    <CartContainer className="  product col-xs-2  col-md-6 col-lg-6 col-xl-4 ">
       <div
         className="card my-3 mx-3"
         onClick={() => {
@@ -29,9 +28,9 @@ const Product = ({ product }) => {
 
         <div className="card-body">
           <h5 className="card-title title">{product.title}</h5>
+          <p className="card-text price">Rs. {product.info}</p>
           <div className="d-flex justify-content-between">
-            <p className="card-text price">Rp. {product.price}</p>
-            <i className="fas fa-shipping-fast fa-2x text-lightgreen"></i>
+            <p className="card-text price">Rs. {product.price}</p>
           </div>
         </div>
 
@@ -43,12 +42,12 @@ const Product = ({ product }) => {
           {product.inCart ? (
             <p className="text-capitalize mb-0" disabled>
               <i class="bi bi-cart-check-fill"></i>
-              {/* In Cart */}
+              In Cart
             </p>
           ) : (
             <span>
               <i class="bi bi-cart-plus-fill"></i>
-              {/* Add To Cart */}
+              Add To Cart
             </span>
           )}
         </button>
