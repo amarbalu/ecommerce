@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
     case "fetch_products":
       return {
         ...state,
-        products: storeProducts,
+        products: [...storeProducts],
       };
     case "add_to_cart":
       return {
@@ -67,7 +67,11 @@ const reducer = (state = initialState, action) => {
         password: "",
         isloggedIn: false,
       };
-
+    case "clear_cart":
+      return {
+        ...state,
+        count: 0,
+      };
     default:
       return state;
   }

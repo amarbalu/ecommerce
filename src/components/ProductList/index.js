@@ -5,7 +5,7 @@ import { ProductListContainer } from "./styles";
 const ProductList = () => {
   const products = useSelector((state) => state.products || []);
   return (
-    <ProductListContainer>
+    <ProductListContainer className="row">
       {products.map((value) => (
         <ProductCard product={value} />
       ))}

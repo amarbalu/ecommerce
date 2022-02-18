@@ -24,7 +24,7 @@ const App = () => {
           <Container className="app-container">
             <Routes>
               {routes.map((props) =>
-                props.path === "/checkout" ? (
+                props.path === "/checkoutdsd" ? (
                   <Route
                     path={props.path}
                     element={

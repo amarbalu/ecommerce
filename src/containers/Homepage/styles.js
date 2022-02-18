@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ProductList from "../../components/ProductList";
 
 export const ProductListContainer = styled(ProductList)`
-  display: inline-block;
   .product {
     -webkit-transition: all 100ms linear;
     transition: all 100ms linear;

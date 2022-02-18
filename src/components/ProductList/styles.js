@@ -4,7 +4,6 @@ export const ProductListContainer = styled("div")`
   .product {
     -webkit-transition: all 100ms linear;
     transition: all 100ms linear;
-    display: inline-block;
   }
 
   .product img {

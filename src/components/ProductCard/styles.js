@@ -6,4 +6,13 @@ export const CartContainer = styled("div")`
     margin: 0 auto;
     transform: translate(0px, 50%);
   }
+  .image-wrapper {
+    position: relative;
+    padding-top: 100%;
+    .inner {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+    }
+  }
 `;

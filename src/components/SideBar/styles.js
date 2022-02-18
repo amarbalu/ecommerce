@@ -34,14 +34,14 @@ export const Sidebarcontainer = styled("div")`
   }
 
   #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    // min-width: 250px;
+    // max-width: 250px;
     color: #fff;
     transition: all 0.3s;
   }
 
   #sidebar.active {
-    margin-left: -250px;
+    // margin-left: -250px;
   }
 
   #sidebar .sidebar-header {

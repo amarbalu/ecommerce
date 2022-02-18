@@ -8,7 +8,7 @@ import { CartContainer } from "./styles";
 const Product = ({ product }) => {
   const dispatch = useDispatch();
   return (
-    <CartContainer className="product col-xs-3  col-md-6 col-lg-3  ">
+    <CartContainer className=" row product col-xs-2  col-md-6 col-lg-3  ">
       <div
         className="card my-3 mx-3"
         onClick={() => {
@@ -16,8 +16,14 @@ const Product = ({ product }) => {
         }}
       >
         <Link to="/details">
-          <div className="card-image rounded">
-            <img src={product.img} alt="product" className="card-img-top p-5" />
+          <div className="card-image rounded image-wrapper">
+            <div className="inner">
+              <img
+                src={product.img}
+                alt="product"
+                className="card-img-top p-5"
+              />
+            </div>
           </div>
         </Link>
 
