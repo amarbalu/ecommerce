@@ -87,27 +87,29 @@ function* updateTotal() {
     console.log(ex);
   }
 }
-function* quantityUpdate(id, mode) {
+function* quantityUpdate(id, mode, value) {
   try {
     const tempCart = yield select((state) => state.cart);
 
     for (let i = 0; tempCart.length; i++) {
       const product = tempCart[i];
       if (product.id === id) {
-        if (mode === "Increment") {
+        if (mode === "add") {
           product.count = product.count + 1;
-        } else {
+        } else if (mode === "remove") {
           product.count = product.count - 1;
           if (!product.count) {
-            yield put(removeItem, id);
+            yield put(removeItem(id));
           }
+        } else {
+          product.count = value;
         }
         product.total = product.count * product.price;
         break;
       }
     }
 
-    yield put(updateCart, tempCart);
+    yield put(updateCart(tempCart));
     yield put(updateTotalAction());
   } catch (ex) {
     console.log(ex);
@@ -115,8 +117,8 @@ function* quantityUpdate(id, mode) {
 }
 
 function* watchQuantityUpdate() {
-  yield takeLatest("quantity_update", ({ id, mode }) =>
-    quantityUpdate(id, mode)
+  yield takeLatest("quantity_update", ({ id, mode, value }) =>
+    quantityUpdate(id, mode, value)
   );
 }
 

@@ -1,16 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removeItem, updateQty } from "../../actions";
 
 export default function CartItem({ item, cart }) {
-  // deklarasi variabel untuk mengeluarkan data yang di kirim dari CartList.js
+  const dispatch = useDispatch();
   const { id, title, img, price, total, count } = item;
-  // deklarasi variabel untuk mengeluarkan dara yang di kirim dari Context.js
-  const { increase, decrease, removeItem } = cart;
+
   return (
     <div className="row justify-content-center my-1 text-capitalize text-center">
       <div className="col-10 mx-auto col-lg-2">
         <img
           src={img}
-          // cara buat style inline
           style={{ width: "5rem", height: "5rem" }}
           className="img-fluid"
           alt="product"
@@ -26,22 +26,34 @@ export default function CartItem({ item, cart }) {
       </div>
       <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
         <div className="d-flex justify-content-center">
-          <div>
-            {/* onClick={()=>decrease(id)} jika tombol di klik akan menjalankan fungsi decrease */}
-            <span className="btn btn-black mx-1" onClick={() => decrease(id)}>
+          <span className="btn btn-black mx-1">
+            <button onClick={() => dispatch(updateQty(id, "add"))}>
               {" "}
-              <i className="fas fa-minus"></i>{" "}
-            </span>
-            <span className="btn btn-black mx-1">{count}</span>
-            <span className="btn btn-black mx-1" onClick={() => increase(id)}>
-              <i className="fas fa-plus"></i>
-            </span>
-          </div>
+              <i class="bi bi-cart-plus"></i>
+            </button>
+          </span>
+          <span className="btn btn-black mx-1">
+            <input
+              type="text"
+              value={count}
+              onChange={(e) =>
+                e.target.value &&
+                dispatch(updateQty(id, "manual", e.target.value))
+              }
+              style={{ width: "3rem" }}
+            ></input>
+          </span>
+
+          <span className="btn btn-black mx-1">
+            <button onClick={() => dispatch(updateQty(id, "remove"))}>
+              <i class="bi bi-cart-dash"></i>
+            </button>
+          </span>
         </div>
       </div>
       <div className="col-10 mx-auto col-lg-2">
-        <div className="text-danger" onClick={() => removeItem(id)}>
-          <div className="fas fa-trash"></div>
+        <div className="text-danger" onClick={() => dispatch(removeItem(id))}>
+          <i class="bi bi-trash"></i>
         </div>
       </div>
       <div className="col-10 mx-auto col-lg-2">

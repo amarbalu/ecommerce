@@ -7,10 +7,11 @@ const addtocartAction = (id) => {
 const fetchProducts = () => ({
   type: "fetch_products",
 });
-const updateQty = (id, mode) => ({
+const updateQty = (id, mode, value) => ({
   type: "quantity_update",
   id,
   mode,
+  value,
 });
 
 const toggleLoginModal = () => ({
