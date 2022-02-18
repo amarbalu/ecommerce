@@ -1,3 +1,26 @@
+export const loginCredentials = [
+  {
+    email: "test@shop.com",
+    password: "test123",
+  },
+  {
+    email: "test1@shop.com",
+    password: "test123",
+  },
+  {
+    email: "test2@shop.com",
+    password: "test123",
+  },
+  {
+    email: "test3@shop.com",
+    password: "test123",
+  },
+  {
+    email: "test4@shop.com",
+    password: "test123",
+  },
+];
+
 export const storeProducts = [
   {
     id: 1,

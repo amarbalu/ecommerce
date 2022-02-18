@@ -4,13 +4,15 @@ import CartColumn from "../../components/CartColumn";
 import CartList from "../../components/CartList";
 import CartTotal from "../../components/CartTotal";
 import EmptyCart from "../../components/EmptyCart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function CartPage() {
   const cart = useSelector((state) => state.cart);
   const cartSubtotal = useSelector((state) => state.cartSubtotal);
   const cartTotal = useSelector((state) => state.cartTotal);
   const cartTax = useSelector((state) => state.cartTax);
+  const isloggedIn = useSelector((state) => state.isloggedIn);
+  const dispatch = useDispatch();
   return (
     <section>
       {cart.length ? (
@@ -23,6 +25,8 @@ export default function CartPage() {
               cartTotal={cartTotal}
               cartSubtotal={cartSubtotal}
               cartTax={cartTax}
+              isloggedIn={isloggedIn}
+              dispatch={dispatch}
             />
           </div>
         </React.Fragment>

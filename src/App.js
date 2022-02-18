@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import NavBar from "./components/NavBar";
 import styled from "styled-components";
 import Login from "./containers/Login";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled("div")`
   &.app-container {
@@ -14,6 +15,7 @@ const Container = styled("div")`
 `;
 
 const App = () => {
+  const email = useSelector((state) => state.email);
   return (
     <div className="App">
       <React.Fragment>
@@ -25,7 +27,11 @@ const App = () => {
                 props.path === "/checkout" ? (
                   <Route
                     path={props.path}
-                    element={<PrivateRoute>{props.component}</PrivateRoute>}
+                    element={
+                      <PrivateRoute email={email}>
+                        {props.component}
+                      </PrivateRoute>
+                    }
                   />
                 ) : (
                   <Route path={props.path} element={props.component} />

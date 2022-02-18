@@ -6,7 +6,9 @@ import {
   updateProducts,
   updateTotalAction,
   updateTotalResult,
+  setloginDetails,
 } from "./actions";
+import { loginCredentials } from "./data";
 function* clearCart() {
   try {
     yield put(updateCart([]));
@@ -60,6 +62,17 @@ function* removeItemInCart(id) {
   } catch (ex) {
     console.log(ex);
   }
+}
+function* loginApi(email, password) {
+  try {
+    const data = loginCredentials;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].email === email && data[i].password === password) {
+        yield put(setloginDetails, email, password);
+        break;
+      }
+    }
+  } catch (ex) {}
 }
 function* updateTotal() {
   try {
@@ -116,11 +129,17 @@ function* watchRemoveItem() {
     removeItemInCart(payload)
   );
 }
+
 function* watchAddItem() {
   yield takeLatest("add_to_cart", ({ payload }) => addItemToCart(payload));
 }
 function* watchUpdateTotal() {
   yield takeLatest("update_total", updateTotal);
+}
+function* watchLogin() {
+  yield takeLatest("login_attempt", ({ email, password }) =>
+    loginApi(email, password)
+  );
 }
 export default function* rootSaga() {
   yield all([
@@ -129,5 +148,6 @@ export default function* rootSaga() {
     watchUpdateTotal(),
     watchAddItem(),
     watchClearCart(),
+    watchLogin(),
   ]);
 }

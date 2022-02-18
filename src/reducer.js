@@ -7,6 +7,10 @@ const initialState = {
   cartSubtotal: 0,
   cartTax: 0,
   cartTotal: 0,
+  email: "",
+  password: "",
+  isloggedIn: false,
+  loginErrorMessage: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -48,6 +52,22 @@ const reducer = (state = initialState, action) => {
         cartTax: action.tax,
         cartTotal: action.total,
       };
+    case "set_login_details":
+      return {
+        ...state,
+        email: action.email,
+        password: action.password,
+        isloggedIn: true,
+        loginModal: !state.loginModal,
+      };
+    case "logout_attempt":
+      return {
+        ...state,
+        email: "",
+        password: "",
+        isloggedIn: false,
+      };
+
     default:
       return state;
   }

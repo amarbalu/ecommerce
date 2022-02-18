@@ -11,6 +11,18 @@ export const Container = styled("nav")`
     height: 50px;
     width: 50px;
   }
+  .logo {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.55);
+
+    font-size: 1.5rem;
+    :hover {
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .navbar-brand {
+      margin-right: 0;
+    }
+  }
 `;
 
 export const ButtonContainer = styled.button`

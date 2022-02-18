@@ -42,6 +42,23 @@ const removeItem = (payload) => ({
 const clearCartItems = () => ({
   type: "clear_cart",
 });
+const login = (email, password) => ({
+  type: "login_attempt",
+  email,
+  password,
+});
+const setloginDetails = (email, password) => ({
+  type: "set_login_details",
+  email,
+  password,
+});
+const logout = () => ({
+  type: "logout_attempt",
+});
+const setLoginError = (msg) => ({
+  type: "login_error",
+  msg,
+});
 export {
   addtocartAction,
   updateQty,
@@ -53,4 +70,8 @@ export {
   removeItem,
   fetchProducts,
   clearCartItems,
+  login,
+  setloginDetails,
+  logout,
+  setLoginError,
 };
