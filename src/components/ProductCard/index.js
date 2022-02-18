@@ -28,7 +28,7 @@ const Product = ({ product }) => {
 
         <div className="card-body">
           <h5 className="card-title title">{product.title}</h5>
-          <p className="card-text price">Rs. {product.info}</p>
+          <p className="card-text price">{product.info}</p>
           <div className="d-flex justify-content-between">
             <p className="card-text price">Rs. {product.price}</p>
           </div>

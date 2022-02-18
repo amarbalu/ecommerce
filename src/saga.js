@@ -56,8 +56,8 @@ function* removeItemInCart(id) {
       }
     }
 
-    yield put(updateCart, tempCart);
-    yield put(updateProducts, tempProducts);
+    yield put(updateCart(tempCart));
+    yield put(updateProducts(tempProducts));
     yield put(updateTotalAction());
   } catch (ex) {
     console.log(ex);
@@ -68,7 +68,7 @@ function* loginApi(email, password) {
     const data = loginCredentials;
     for (let i = 0; i < data.length; i++) {
       if (data[i].email === email && data[i].password === password) {
-        yield put(setloginDetails, email, password);
+        yield put(setloginDetails(email, password));
         break;
       }
     }
