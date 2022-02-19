@@ -49,8 +49,14 @@ before showing the page.
 ● Clicking on Confirm Order should save the order. After saving the order, the
 user should be redirected to the home page with the cart cleared.
 
+## Future Planning
+
+Adding Intersection observer to lazy load images
+
 ## Steps to run
 1.git clone https://github.com/amarbalu/ecommerce.git 
+
 2. npm install
+
 3. npm start
 
