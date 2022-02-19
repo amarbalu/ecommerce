@@ -159,39 +159,59 @@ function* quantityUpdate(id, mode, value) {
     console.log(ex);
   }
 }
-
+/**
+ * watchAddItem saga helps us to manage quantity update in cart page
+ */
 function* watchQuantityUpdate() {
   yield takeLatest("quantity_update", ({ id, mode, value }) =>
     quantityUpdate(id, mode, value)
   );
 }
-
+/**
+ * watchAddItem saga helps us to fetch manage clear cart operation
+ */
 function* watchClearCart() {
   yield takeLatest("clear_cart", clearCart);
 }
-
+/**
+ * watchAddItem saga helps us to manage remove product from cart operation
+ */
 function* watchRemoveItem() {
   yield takeLatest("remove_item_cart", ({ payload }) =>
     removeItemInCart(payload)
   );
 }
+/**
+ * watchAddItem saga helps us to fetch filters of this application
+ */
 function* watchFilteredResult() {
   yield takeLatest("fetch_filter_result", ({ item, value }) =>
     fetchFilteredListOfItem(item, value)
   );
 }
-
+/**
+ * watchAddItem saga helps us to do watch cart addition
+ */
 function* watchAddItem() {
   yield takeLatest("add_to_cart", ({ payload }) => addItemToCart(payload));
 }
+/**
+ * watchUpdateTotal saga helps us to do total and tx in cart page
+ */
 function* watchUpdateTotal() {
   yield takeLatest("update_total", updateTotal);
 }
+/**
+ * watchLogin saga helps us to do login attempt
+ */
 function* watchLogin() {
   yield takeLatest("login_attempt", ({ email, password }) =>
     loginApi(email, password)
   );
 }
+/**
+ * watchfetchFilterLists saga helps us to fetch products based on filters
+ */
 function* watchfetchFilterLists() {
   yield takeLatest("fetch_filters", fetchFilterList);
 }

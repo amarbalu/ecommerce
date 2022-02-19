@@ -27,6 +27,14 @@ export const Modalbody = styled("div")`
   .login-page {
     background-color: #e5e7ed;
   }
+  .btn-close {
+    position: absolute;
+    right: 10px;
+  }
+
+  .logo {
+    width: 50px;
+  }
   .login-page main {
     width: 100%;
     max-width: 460px;
@@ -62,6 +70,7 @@ export const Modalbody = styled("div")`
   .login-block .input-group-addon:focus {
     background-color: transparent;
     border: none;
+    box-shadow: none;
   }
   .login-block .form-control {
     font-size: 17px;
@@ -83,8 +92,9 @@ export const Modalbody = styled("div")`
     margin-top: 30px;
     padding: 10px;
     width: 160px;
-    background: #29aafe;
-    border-color: #29aafe;
+    background: #51d4d3;
+    border-color: #51d4d3;
+    color: unset;
   }
   .login-block .hr-xs {
     margin-top: 5px;

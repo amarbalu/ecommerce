@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchProducts, fetch_filters } from "../../actions";
+import { fetch_filters } from "../../actions";
 import ProductList from "../../components/ProductList";
 import Sidebar from "../../components/SideBar";
-
+/**
+ * Homepage function provides the homepage template
+ * @returns Component
+ */
 const Homepage = () => {
   const dispatch = useDispatch();
   useEffect(() => dispatch(fetch_filters()), []);

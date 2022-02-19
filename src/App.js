@@ -1,11 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import { routes } from "./routes";
+
 import PrivateRoute from "./components/PrivateRoute";
 import NavBar from "./components/NavBar";
 import styled from "styled-components";
 import Login from "./containers/Login";
-import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled("div")`
   &.app-container {
@@ -13,6 +14,10 @@ const Container = styled("div")`
     top: 82px;
   }
 `;
+/**
+ * App form base of this application loads Navbar and its content routes
+ * @returns Component
+ */
 
 const App = () => {
   const email = useSelector((state) => state.email);

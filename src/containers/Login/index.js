@@ -10,12 +10,11 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const onChangeInput = (e, mode) => {
-    const regex = /^(.+)@(.+)$/g;
+    // const regex = /^(.+)@(.+)$/g;
+    //Need to add validation for required fields
     const { value } = e.target;
     if (mode === "username") {
-      // if (regex.test(value)) {
       setUserName(value);
-      // }
     } else {
       setPassword(value);
     }
@@ -25,27 +24,29 @@ const Login = () => {
       <ModalContainer onClick={() => dispatch(toggleLoginModal())}>
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <Modalheader className="modal-header">
-              <button
-                type="button"
-                className="btn-close"
-                onClick={() => dispatch(toggleLoginModal())}
-              ></button>
-            </Modalheader>
             <div className="modal-body">
               <Modalbody>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => dispatch(toggleLoginModal())}
+                ></button>
                 <div className="login-block">
-                  <h1>Log into your account</h1>
+                  <div>
+                    <img
+                      src={process.env.PUBLIC_URL + "shop.png"}
+                      alt="store"
+                      className="logo"
+                    />
+                    Shop
+                  </div>
 
                   <div className="form-group">
                     <div className="input-group">
-                      <span className="input-group-addon">
-                        <i className="fa fa-user ti-user"></i>
-                      </span>
                       <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Username"
+                        type="email"
+                        className="form-control required"
+                        placeholder="Email"
                         value={userName}
                         onChange={(e) => onChangeInput(e, "username")}
                       />
@@ -61,7 +62,7 @@ const Login = () => {
                       </span>
                       <input
                         type="password"
-                        className="form-control"
+                        className="form-control required"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => onChangeInput(e, "password")}
@@ -75,37 +76,7 @@ const Login = () => {
                   >
                     Login
                   </button>
-
-                  {/* <div className="login-footer">
-                    <h6>Or register with</h6>
-                    <ul className="social-icons">
-                      <li>
-                        <a className="facebook" href="#">
-                          <i className="fa fa-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a className="twitter" href="#">
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a className="linkedin" href="#">
-                          <i className="fa fa-linkedin"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div> */}
                 </div>
-
-                {/* <div className="login-links">
-                  <p className="text-center">
-                    Already have an account?{" "}
-                    <a className="txt-brand" href="user-login.html">
-                      Login
-                    </a>
-                  </p>
-                </div> */}
               </Modalbody>
             </div>
           </div>

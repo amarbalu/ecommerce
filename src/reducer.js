@@ -1,3 +1,7 @@
+/**
+ * Reducer of this Application - Data fetched from ./data
+ *
+ */
 import { storeProducts } from "./data";
 const initialState = {
   count: 0,
