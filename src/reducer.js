@@ -11,10 +11,16 @@ const initialState = {
   password: "",
   isloggedIn: false,
   loginErrorMessage: "",
+  filters: {},
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case "set_filters":
+      return {
+        ...state,
+        filters: Object.assign({}, action.filters),
+      };
     case "fetch_products":
       return {
         ...state,
@@ -67,11 +73,7 @@ const reducer = (state = initialState, action) => {
         password: "",
         isloggedIn: false,
       };
-    case "clear_cart":
-      return {
-        ...state,
-        count: 0,
-      };
+
     default:
       return state;
   }

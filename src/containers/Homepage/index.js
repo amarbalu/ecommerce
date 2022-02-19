@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchProducts } from "../../actions";
+import { fetchProducts, fetch_filters } from "../../actions";
 import ProductList from "../../components/ProductList";
 import Sidebar from "../../components/SideBar";
 
 const Homepage = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(fetchProducts()), []);
+  useEffect(() => dispatch(fetch_filters()), []);
   return (
     <div className="row container-fluid">
       <div className="d-none d-sm-none d-lg-block  col-lg-2 col-xl-2">

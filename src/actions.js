@@ -60,6 +60,13 @@ const setLoginError = (msg) => ({
   type: "login_error",
   msg,
 });
+const fetch_filters = () => ({
+  type: "fetch_filters",
+});
+const setfilters = (filters) => ({
+  type: "set_filters",
+  filters,
+});
 export {
   addtocartAction,
   updateQty,
@@ -74,5 +81,7 @@ export {
   login,
   setloginDetails,
   logout,
+  fetch_filters,
+  setfilters,
   setLoginError,
 };

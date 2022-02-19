@@ -7,7 +7,10 @@ import { CartContainer } from "./styles";
 const Product = ({ product }) => {
   const dispatch = useDispatch();
   return (
-    <CartContainer className="  product col-xs-2  col-md-6 col-lg-6 col-xl-4 ">
+    <CartContainer
+      key={product.id}
+      className="  product col-xs-2  col-md-6 col-lg-6 col-xl-4 "
+    >
       <div
         className="card my-3 mx-3"
         onClick={() => {

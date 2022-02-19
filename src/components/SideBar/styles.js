@@ -9,7 +9,9 @@ export const Sidebarcontainer = styled("div")`
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   }
-
+  .nav-link {
+    color: rgba(0, 0, 0, 0.55);
+  }
   .navbar-btn {
     box-shadow: none;
     outline: none !important;

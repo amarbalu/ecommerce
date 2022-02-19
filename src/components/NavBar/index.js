@@ -47,10 +47,10 @@ const NavBarMenu = () => {
               </div>
             ) : (
               <ButtonContainer
-                className="cart-icon"
+                className="cart-icon nav-link"
                 onClick={() => dispatch(logout())}
               >
-                <Icon className="bi bi-person -circle  position-relative ms-2"></Icon>
+                <Icon className="bi bi-person -circle  "></Icon>
               </ButtonContainer>
             )}
           </Link>

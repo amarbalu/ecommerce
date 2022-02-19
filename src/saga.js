@@ -1,30 +1,45 @@
 import { all, put, takeLatest, call, select } from "redux-saga/effects";
 import {
-  fetchProducts,
   removeItem,
   updateCart,
   updateProducts,
   updateTotalAction,
   updateTotalResult,
   setloginDetails,
+  setfilters,
+  fetchProducts,
 } from "./actions";
 import { loginCredentials } from "./data";
 function* fetchFilterList() {
-  const filters = [];
-  let tempProducts = yield select((state) => state.products);
-  const filterAttrs = ["color", "person", "type"];
-  tempProducts.reduce((total, current) => {
-    if (current) {
-    }
-  }, {});
   try {
+    yield put(fetchProducts());
+    let tempProducts = yield select((state) => state.products);
+    const initialObject = { color: [], person: [], type: [] };
+    const keys = Object.keys(initialObject);
+    const finalFilteredObj = tempProducts.reduce((total, current) => {
+      for (let key in current) {
+        if (keys.indexOf(key) >= 0 && total[key].indexOf(current[key]) === -1) {
+          total[key].push(current[key]);
+        }
+      }
+      return total;
+    }, initialObject);
+
+    yield put(setfilters(finalFilteredObj));
   } catch (ex) {}
 }
 function* clearCart() {
   try {
-    yield put(updateCart([]));
-    yield put(updateTotalAction());
-    yield put(fetchProducts);
+    const tempCart = yield select((state) => state.cart);
+
+    for (let i = 0; i < tempCart.length; i++) {
+      const { id } = tempCart[i];
+
+      yield put(removeItem(id));
+    }
+
+    // yield put(updateCart(tempCart));
+    // yield put(updateTotalAction());
   } catch (ex) {
     console.log(ex);
   }
@@ -154,6 +169,9 @@ function* watchLogin() {
     loginApi(email, password)
   );
 }
+function* watchfetchFilterLists() {
+  yield takeLatest("fetch_filters", fetchFilterList);
+}
 export default function* rootSaga() {
   yield all([
     watchQuantityUpdate(),
@@ -162,5 +180,6 @@ export default function* rootSaga() {
     watchAddItem(),
     watchClearCart(),
     watchLogin(),
+    watchfetchFilterLists(),
   ]);
 }
