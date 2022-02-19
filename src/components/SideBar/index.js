@@ -6,7 +6,7 @@ const useFilteredMenus = (filters, menu, menuAction, subMenuAction) => {
   const finalFilters = [];
   for (let item in filters) {
     finalFilters.push(
-      <li id={item} onClick={menuAction}>
+      <li id={item} onClick={menuAction} className="head-list">
         <a
           href="#homeSubmenu"
           data-toggle="collapse"
@@ -55,7 +55,7 @@ const Sidebar = () => {
     <Sidebarcontainer>
       <nav id="sidebar">
         <ul class="list-unstyled components">
-          <li className={`menu ${menu === "all" ? "active" : ""}`}>
+          <li className={`menu ${menu === "all" ? "active" : ""} head-list`}>
             <a
               href="#"
               onClick={(e) => {

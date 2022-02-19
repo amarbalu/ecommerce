@@ -4,6 +4,9 @@ export const Sidebarcontainer = styled("div")`
   .menu.active {
     background: #1dc7c8;
   }
+  #sidebar .head-list {
+    text-transform: capitalize;
+  }
   .navbar {
     padding: 15px 10px;
     background: #fff;

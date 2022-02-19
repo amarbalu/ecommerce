@@ -7,6 +7,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import NavBar from "./components/NavBar";
 import styled from "styled-components";
 import Login from "./containers/Login";
+import Toast from "./components/Toaster";
 
 const Container = styled("div")`
   &.app-container {
@@ -46,6 +47,7 @@ const App = () => {
             </Routes>
           </Container>
           <Login />
+          {email && <Toast />}
         </BrowserRouter>
       </React.Fragment>
     </div>
