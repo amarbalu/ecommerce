@@ -32,6 +32,7 @@ const App = () => {
               {routes.map((props) =>
                 props.path === "/checkout" ? (
                   <Route
+                    key={props.path}
                     path={props.path}
                     element={
                       <PrivateRoute email={email}>
@@ -40,7 +41,11 @@ const App = () => {
                     }
                   />
                 ) : (
-                  <Route path={props.path} element={props.component} />
+                  <Route
+                    key={props.path}
+                    path={props.path}
+                    element={props.component}
+                  />
                 )
               )}
               <Route path="*" element={<Navigate to="/homepage" replace />} />

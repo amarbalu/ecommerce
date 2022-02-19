@@ -6,19 +6,23 @@ const useFilteredMenus = (filters, menu, subMenuAction) => {
   const finalFilters = [];
   for (let item in filters) {
     finalFilters.push(
-      <li id={item} className="head-list">
+      <li key={item} id={item} className="head-list">
         <a
           href="#homeSubmenu"
           data-toggle="collapse"
           aria-expanded="false"
           id={item}
+          onClick={(e) => e.preventDefault()}
         >
           {item}
         </a>
         <ul className=" list-unstyled subMenu" id={item}>
           {filters[item].map((subMenu) => {
             return (
-              <li className={`menu ${menu === subMenu ? "active" : ""}`}>
+              <li
+                key={subMenu}
+                className={`menu ${menu === subMenu ? "active" : ""}`}
+              >
                 <a href="#" onClick={(e) => subMenuAction(e, item, subMenu)}>
                   {subMenu}
                 </a>

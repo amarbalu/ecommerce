@@ -6,7 +6,10 @@ import CartTotal from "../../components/CartTotal";
 import EmptyCart from "../../components/EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-
+/**
+ * CartPage function provides the CartPage template
+ * @returns Component
+ */
 export default function CartPage() {
   const cart = useSelector((state) => state.cart);
   const cartSubtotal = useSelector((state) => state.cartSubtotal);

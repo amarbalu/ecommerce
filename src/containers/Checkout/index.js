@@ -4,8 +4,11 @@ import { Link, Navigate } from "react-router-dom";
 import { clearCartItems, clearProceedToCheckout } from "../../actions";
 import CheckoutList from "../../components/CheckoutList";
 import { CheckoutSection } from "./styles";
-
-export default function CartPage() {
+/**
+ * Checkoutpage function provides the checkout template
+ * @returns Component
+ */
+export default function CheckoutPage() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const proceedToCheckout = useSelector((state) => state.proceedToCheckout);

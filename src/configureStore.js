@@ -2,7 +2,9 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { reducer, initialState } from "./reducer";
 import rootSaga from "./saga";
-
+/**
+ * ConfigureStore helps us to Store formation using Redux
+ */
 const saga = createSagaMiddleware();
 
 const enhancers = [];

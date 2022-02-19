@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, toggleLoginModal } from "../../actions";
 import Modal from "../../components/Modal";
-import { Modalheader, Modalbody, ModalContainer } from "./styles";
-
+import { Modalbody, ModalContainer } from "./styles";
+/**
+ * Login function provides the Login Popup template
+ * @returns Component
+ */
 const Login = () => {
   const modalOpen = useSelector((state) => state.loginModal);
   const dispatch = useDispatch();
@@ -45,7 +48,7 @@ const Login = () => {
                     <div className="input-group">
                       <input
                         type="email"
-                        autofocus
+                        autoFocus
                         className="form-control required"
                         placeholder="Email"
                         value={userName}
