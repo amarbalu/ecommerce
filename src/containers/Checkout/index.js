@@ -1,19 +1,27 @@
 import React, { Component, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { clearCartItems } from "../../actions";
+import { clearCartItems, clearProceedToCheckout } from "../../actions";
 import CheckoutList from "../../components/CheckoutList";
 import { CheckoutSection } from "./styles";
 
 export default function CartPage() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const proceedToCheckout = useSelector((state) => state.proceedToCheckout);
+  const loginSuccess = useSelector((state) => state.loginSuccess);
+
+  useEffect(() => {
+    if (proceedToCheckout && loginSuccess) {
+      dispatch(clearProceedToCheckout());
+    }
+  }, []);
   return (
     <CheckoutSection className="container mt-2">
       <div className="row">
         <div className="col-12 d-flex justify-content-center justify-content-sm-between mx-auto my-2  text-center text-slide">
           <div>
-            <i class="bi bi-cart4"></i>
+            <i className="bi bi-cart4"></i>
             <span>One step ahead to checkout</span>
           </div>
           <Link to="/">

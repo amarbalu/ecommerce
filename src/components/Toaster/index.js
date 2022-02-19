@@ -1,9 +1,9 @@
 const Toast = () => {
   return (
-    <div class="position-fixed bottom-0 end-0 p-3">
-      <div class="toast show">
-        <div class="toast-header">You are Logged In!!!</div>
-        <div class="toast-body">
+    <div className="position-fixed bottom-0 end-0 p-3">
+      <div className="toast show">
+        <div className="toast-header">You are Logged In!!!</div>
+        <div className="toast-body">
           To Logout, Please click profile icon in header
         </div>
       </div>

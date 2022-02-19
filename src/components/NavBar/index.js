@@ -11,7 +11,7 @@ const NavBarMenu = () => {
     <Container className="navbar navbar-expand-lg navbar-light bg-light px-sm-5 fixed-top">
       <div className="container-fluid">
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarTogglerDemo02"
@@ -19,7 +19,7 @@ const NavBarMenu = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
         <Link to="/" className="logo">
           <img

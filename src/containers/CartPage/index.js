@@ -1,12 +1,11 @@
 import React, { Component, useEffect } from "react";
-import Title from "./Title";
+import { CartSection } from "./Styles";
 import CartColumn from "../../components/CartColumn";
 import CartList from "../../components/CartList";
 import CartTotal from "../../components/CartTotal";
 import EmptyCart from "../../components/EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { clearProceedToCheckout } from "../../actions";
 
 export default function CartPage() {
   const cart = useSelector((state) => state.cart);
@@ -17,21 +16,20 @@ export default function CartPage() {
   const proceedToCheckout = useSelector((state) => state.proceedToCheckout);
   const loginSuccess = useSelector((state) => state.loginSuccess);
   const dispatch = useDispatch();
-  useEffect(() => {
-    return () => {
-      if (proceedToCheckout && loginSuccess) {
-        dispatch(clearProceedToCheckout());
-      }
-    };
-  }, []);
+
   return !loginSuccess || !proceedToCheckout ? (
-    <section>
+    <CartSection>
       {cart.length ? (
-        <React.Fragment>
-          <div className="container-fluid">
-            <Title name="Your" title="cart"></Title>
-            <CartColumn cart={cart} />
+        <div className="container mt-2">
+          <div className="col-12 d-flex justify-content-center justify-content-sm-between mx-auto my-2  text-center text-slide">
+            <div>
+              <i className="header bi bi-cart4"></i>
+              <span>Your Cart</span>
+            </div>
+          </div>
+          <div className=" d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap">
             <CartList cart={cart} />
+
             <CartTotal
               cartTotal={cartTotal}
               cartSubtotal={cartSubtotal}
@@ -42,11 +40,11 @@ export default function CartPage() {
               loginSuccess={loginSuccess}
             />
           </div>
-        </React.Fragment>
+        </div>
       ) : (
         <EmptyCart />
       )}
-    </section>
+    </CartSection>
   ) : (
     <Navigate to="/checkout" />
   );

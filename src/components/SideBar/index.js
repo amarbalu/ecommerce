@@ -15,7 +15,7 @@ const useFilteredMenus = (filters, menu, subMenuAction) => {
         >
           {item}
         </a>
-        <ul class=" list-unstyled subMenu" id={item}>
+        <ul className=" list-unstyled subMenu" id={item}>
           {filters[item].map((subMenu) => {
             return (
               <li className={`menu ${menu === subMenu ? "active" : ""}`}>
@@ -47,7 +47,7 @@ const Sidebar = () => {
   return (
     <Sidebarcontainer>
       <nav id="sidebar">
-        <ul class="list-unstyled components">
+        <ul className="list-unstyled components">
           <li className={`menu ${menu === "all" ? "active" : ""} head-list`}>
             <a
               href="#"

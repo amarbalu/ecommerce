@@ -40,12 +40,12 @@ const Product = ({ product }) => {
         >
           {product.inCart ? (
             <p className="text-capitalize mb-0" disabled>
-              <i class="bi bi-cart-check-fill"></i>
+              <i className="bi bi-cart-check-fill"></i>
               In Cart
             </p>
           ) : (
             <span>
-              <i class="bi bi-cart-plus-fill"></i>
+              <i className="bi bi-cart-plus-fill"></i>
               Add To Cart
             </span>
           )}

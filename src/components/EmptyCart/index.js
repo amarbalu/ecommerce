@@ -7,7 +7,7 @@ export default function EmptyCart() {
     <Container className="container mt-5">
       <div className="row">
         <div className="col-12  mx-auto my-5  text-center text-slide">
-          <i class="bi bi-emoji-frown"></i>
+          <i className="bi bi-emoji-frown"></i>
           <span>Your Cart is Empty</span>
         </div>
       </div>
