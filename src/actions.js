@@ -14,8 +14,9 @@ const updateQty = (id, mode, value) => ({
   value,
 });
 
-const toggleLoginModal = () => ({
+const toggleLoginModal = (proceedToCheckout) => ({
   type: "toggle_login_modal",
+  proceedToCheckout,
 });
 
 const updateCart = (payload) => ({

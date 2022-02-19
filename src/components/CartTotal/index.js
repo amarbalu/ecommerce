@@ -19,7 +19,7 @@ export default function CartTotal({
               onClick={(event) => {
                 if (!isloggedIn) {
                   event.preventDefault();
-                  dispatch(toggleLoginModal());
+                  dispatch(toggleLoginModal(true));
                 }
               }}
             >

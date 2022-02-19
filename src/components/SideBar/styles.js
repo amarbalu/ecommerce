@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Sidebarcontainer = styled("div")`
+  .menu.active {
+    background: #1dc7c8;
+  }
   .navbar {
     padding: 15px 10px;
     background: #fff;
@@ -67,10 +70,12 @@ export const Sidebarcontainer = styled("div")`
     text-decoration: none;
     color: #333;
   }
+  #sidebar ul li.active a:hover {
+    background: #1dc7c8;
+  }
 
   #sidebar ul li a:hover {
-    color: #7386d5;
-    background: #fff;
+    color: #039aaf;
   }
 
   #sidebar ul li.active > a,
@@ -93,7 +98,7 @@ export const Sidebarcontainer = styled("div")`
   ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    // background: #6d7fcc;
   }
 
   ul.CTAs {
@@ -136,7 +141,7 @@ export const Sidebarcontainer = styled("div")`
 
   @media (max-width: 768px) {
     #sidebar {
-      margin-left: -250px;
+      // margin-left: -250px;
     }
     #sidebar.active {
       margin-left: 0;

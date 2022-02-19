@@ -12,6 +12,7 @@ const initialState = {
   isloggedIn: false,
   loginErrorMessage: "",
   filters: {},
+  proceedToCheckout: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,6 +41,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loginModal: !state.loginModal,
+        proceedToCheckout: action.proceedToCheckout,
       };
     case "update_cart":
       return {
@@ -64,7 +66,8 @@ const reducer = (state = initialState, action) => {
         email: action.email,
         password: action.password,
         isloggedIn: true,
-        loginModal: !state.loginModal,
+        loginModal: action.loginModal,
+        proceedToCheckout: false,
       };
     case "logout_attempt":
       return {

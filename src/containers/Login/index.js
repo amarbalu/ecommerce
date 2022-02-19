@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setloginDetails, toggleLoginModal } from "../../actions";
+import { login, toggleLoginModal } from "../../actions";
 import Modal from "../../components/Modal";
 import { Modalheader, Modalbody, ModalContainer } from "./styles";
 
@@ -71,9 +71,7 @@ const Login = () => {
                   <hr className="hr-xs" />
                   <button
                     className="btn btn-primary btn-block"
-                    onClick={() =>
-                      dispatch(setloginDetails(userName, password))
-                    }
+                    onClick={() => dispatch(login(userName, password))}
                   >
                     Login
                   </button>

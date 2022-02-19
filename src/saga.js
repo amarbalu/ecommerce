@@ -1,4 +1,6 @@
-import { all, put, takeLatest, call, select } from "redux-saga/effects";
+import { all, put, takeLatest, select } from "redux-saga/effects";
+import { push } from "react-router-redux";
+
 import {
   removeItem,
   updateCart,
@@ -101,10 +103,18 @@ function* removeItemInCart(id) {
 }
 function* loginApi(email, password) {
   try {
+    let proceedToCheckout = yield select((state) => state.proceedToCheckout);
+    let loginModel = yield select((state) => state.loginModel);
     const data = loginCredentials;
     for (let i = 0; i < data.length; i++) {
       if (data[i].email === email && data[i].password === password) {
-        yield put(setloginDetails(email, password));
+        if (proceedToCheckout) {
+          yield put(setloginDetails(email, password, !loginModel));
+          yield put(push("/checkout"));
+        } else {
+          yield put(setloginDetails(email, password, !loginModel));
+        }
+
         break;
       }
     }
