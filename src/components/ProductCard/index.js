@@ -14,17 +14,13 @@ const Product = ({ product }) => {
           //   value.handleDetail(product.id);
         }}
       >
-        <Link to="/details">
-          <div className="card-image rounded image-wrapper">
-            <div className="inner">
-              <img
-                src={product.img}
-                alt="product"
-                className="card-img-top p-5"
-              />
-            </div>
+        {/* <Link to="/details"> */}
+        <div className="card-image rounded image-wrapper">
+          <div className="inner">
+            <img src={product.img} alt="product" className="card-img-top p-5" />
           </div>
-        </Link>
+        </div>
+        {/* </Link> */}
 
         <div className="card-body">
           <h5 className="card-title title">{product.title}</h5>
