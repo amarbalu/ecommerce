@@ -67,6 +67,11 @@ const setfilters = (filters) => ({
   type: "set_filters",
   filters,
 });
+const fetchFilteredResult = (item, value) => ({
+  type: "fetch_filter_result",
+  value,
+  item,
+});
 export {
   addtocartAction,
   updateQty,
@@ -84,4 +89,5 @@ export {
   fetch_filters,
   setfilters,
   setLoginError,
+  fetchFilteredResult,
 };

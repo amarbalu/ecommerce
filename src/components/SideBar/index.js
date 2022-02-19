@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFilteredResult } from "../../actions";
 import { Sidebarcontainer } from "./styles";
 
-const filterItemWithSubmenu = (filters) => {
+const filterItemWithSubmenu = (filters, dispatch) => {
   const finalFilters = [];
   for (let item in filters) {
     finalFilters.push(
@@ -27,7 +28,7 @@ const filterItemWithSubmenu = (filters) => {
                 className="nav-link px-0"
                 onClick={(e) => {
                   e.preventDefault();
-                  console.log(e.target.id);
+                  dispatch(fetchFilteredResult(item, value));
                 }}
               >
                 <span className="nav-link">{value}</span>
@@ -42,17 +43,25 @@ const filterItemWithSubmenu = (filters) => {
 };
 const Sidebar = () => {
   const filters = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
   return (
     <Sidebarcontainer>
       <div className="navbar-nav me-auto mb-2 mb-lg-0">
         <ul className="nav nav-pills flex-column " id="sidebar-menu">
           <li className="nav-item">
-            <a href="#" className="nav-link align-middle px-0">
+            <a
+              href="#"
+              className="nav-link align-middle px-0"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(fetchFilteredResult("All", ""));
+              }}
+            >
               <span className="ms-1 ">All</span>
             </a>
           </li>
 
-          {filterItemWithSubmenu(filters)}
+          {filterItemWithSubmenu(filters, dispatch)}
         </ul>
       </div>
     </Sidebarcontainer>

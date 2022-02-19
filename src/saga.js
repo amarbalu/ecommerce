@@ -9,7 +9,7 @@ import {
   setfilters,
   fetchProducts,
 } from "./actions";
-import { loginCredentials } from "./data";
+import { loginCredentials, storeProducts } from "./data";
 function* fetchFilterList() {
   try {
     yield put(fetchProducts());
@@ -28,6 +28,19 @@ function* fetchFilterList() {
     yield put(setfilters(finalFilteredObj));
   } catch (ex) {}
 }
+function* fetchFilteredListOfItem(type = "color", item = "yellow") {
+  try {
+    if (type !== "All") {
+      yield put(fetchProducts());
+      let tempProducts = yield select((state) => state.products);
+      tempProducts = tempProducts.filter((value) => value[type] === item);
+
+      yield put(updateProducts(tempProducts));
+    } else {
+      yield put(updateProducts(storeProducts));
+    }
+  } catch (ex) {}
+}
 function* clearCart() {
   try {
     const tempCart = yield select((state) => state.cart);
@@ -37,9 +50,6 @@ function* clearCart() {
 
       yield put(removeItem(id));
     }
-
-    // yield put(updateCart(tempCart));
-    // yield put(updateTotalAction());
   } catch (ex) {
     console.log(ex);
   }
@@ -157,6 +167,11 @@ function* watchRemoveItem() {
     removeItemInCart(payload)
   );
 }
+function* watchFilteredResult() {
+  yield takeLatest("fetch_filter_result", ({ item, value }) =>
+    fetchFilteredListOfItem(item, value)
+  );
+}
 
 function* watchAddItem() {
   yield takeLatest("add_to_cart", ({ payload }) => addItemToCart(payload));
@@ -181,5 +196,6 @@ export default function* rootSaga() {
     watchClearCart(),
     watchLogin(),
     watchfetchFilterLists(),
+    watchFilteredResult(),
   ]);
 }
