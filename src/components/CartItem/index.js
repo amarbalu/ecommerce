@@ -79,7 +79,7 @@ export default function CartItem({ item }) {
               <i className="bi bi-trash"></i>
             </div>
           </div>
-          <div className="col-10  col-lg-2">
+          <div className="col-10  col-lg-6">
             <strong>Rs. {total}</strong>
           </div>
         </div>
