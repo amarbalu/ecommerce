@@ -13,6 +13,10 @@ const updateQty = (id, mode, value) => ({
   mode,
   value,
 });
+const selectedMenu = (menu) => ({
+  type: "selected_menu",
+  menu,
+});
 
 const toggleLoginModal = (proceedToCheckout) => ({
   type: "toggle_login_modal",
@@ -96,4 +100,5 @@ export {
   setfilters,
   setLoginError,
   fetchFilteredResult,
+  selectedMenu,
 };

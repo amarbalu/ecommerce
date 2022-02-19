@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Sidebarcontainer } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFilteredResult } from "../../actions";
-const useFilteredMenus = (filters, menu, menuAction, subMenuAction) => {
+import { fetchFilteredResult, selectedMenu } from "../../actions";
+const useFilteredMenus = (filters, menu, subMenuAction) => {
   const finalFilters = [];
   for (let item in filters) {
     finalFilters.push(
-      <li id={item} onClick={menuAction} className="head-list">
+      <li id={item} className="head-list">
         <a
           href="#homeSubmenu"
           data-toggle="collapse"
@@ -33,23 +33,16 @@ const useFilteredMenus = (filters, menu, menuAction, subMenuAction) => {
 };
 
 const Sidebar = () => {
-  const [menu, setMenu] = useState("all");
+  const menu = useSelector((state) => state.menu);
   const filters = useSelector((state) => state.filters);
   const dispatch = useDispatch();
-  const menuAction = (submenu) => {
-    setMenu(submenu);
-  };
+
   const subMenuAction = (e, item, subMenu) => {
     e.stopPropagation();
-    setMenu(subMenu);
+    dispatch(selectedMenu(subMenu));
     dispatch(fetchFilteredResult(item, subMenu));
   };
-  const filterItems = useFilteredMenus(
-    filters,
-    menu,
-    menuAction,
-    subMenuAction
-  );
+  const filterItems = useFilteredMenus(filters, menu, subMenuAction);
 
   return (
     <Sidebarcontainer>
@@ -60,8 +53,8 @@ const Sidebar = () => {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                setMenu("all");
-                dispatch(fetchFilteredResult("All", ""));
+                dispatch(selectedMenu("all"));
+                dispatch(fetchFilteredResult("all", ""));
               }}
             >
               <span className="ms-1 ">All</span>

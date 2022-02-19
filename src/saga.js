@@ -31,7 +31,7 @@ function* fetchFilterList() {
 }
 function* fetchFilteredListOfItem(type = "color", item = "yellow") {
   try {
-    if (type !== "All") {
+    if (type !== "all") {
       yield put(fetchProducts());
       let tempProducts = yield select((state) => state.products);
       tempProducts = tempProducts.filter((value) => value[type] === item);

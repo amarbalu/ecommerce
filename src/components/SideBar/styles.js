@@ -17,11 +17,13 @@ export const Sidebarcontainer = styled("div")`
   }
   .nav-link {
     color: rgba(0, 0, 0, 0.55);
+    cursor: pointer;
   }
   .navbar-btn {
     box-shadow: none;
     outline: none !important;
     border: none;
+    cursor: pointer;
   }
 
   .line {

@@ -16,6 +16,7 @@ export const Container = styled("nav")`
   }
   .link {
     text-decoration: none;
+    cursor:pointer;
   }
   img {
     height: 50px;

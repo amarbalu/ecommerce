@@ -18,10 +18,16 @@ const initialState = {
   filters: {},
   proceedToCheckout: false,
   loginSuccess: false,
+  menu: "all",
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case "selected_menu":
+      return {
+        ...state,
+        menu: action.menu,
+      };
     case "set_filters":
       return {
         ...state,
