@@ -2,47 +2,27 @@ import React from "react";
 
 export default function CheckoutItem({ item, cart }) {
   const { id, title, img, price, total, count } = item;
-  const { increase, decrease, removeItem } = cart;
+
   return (
-    <div className="row justify-content-center my-1 text-capitalize text-center">
-      <div className="col-10 mx-auto col-lg-2">
-        <img
-          src={img}
-          style={{ width: "5rem", height: "5rem" }}
-          className="img-fluid"
-          alt="product"
-        />
-      </div>
-      <div className="col-10 mx-auto col-lg-2">
-        <span className="d-lg-none">product : </span>
-        {title}
-      </div>
-      <div className="col-10 mx-auto col-lg-2">
-        <span className="d-lg-none">price : </span>
-        {price}
-      </div>
-      <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
-        <div className="d-flex justify-content-center">
-          <div>
-            <span className="btn btn-black mx-1" onClick={() => decrease(id)}>
-              {" "}
-              <i className="fas fa-minus"></i>{" "}
-            </span>
-            <span className="btn btn-black mx-1">{count}</span>
-            <span className="btn btn-black mx-1" onClick={() => increase(id)}>
-              <i className="fas fa-plus"></i>
-            </span>
+    <div className=" my-1 text-capitalize col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
+      <div class="card ">
+        <div class="card-body">
+          <div className="col-12 text-center">
+            <img src={img} className="img-fluid" alt="product" />
+          </div>
+          <div className="col-12">
+            <strong>{title}</strong>
+            <div>Rs. {price}</div>
+
+            <div>
+              <span>Qty - {count}</span>
+            </div>
+
+            <div>
+              <strong>Rs. {total}</strong>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="col-10 mx-auto col-lg-2">
-        <div className="text-danger" onClick={() => removeItem(id)}>
-          <div className="fas fa-trash"></div>
-        </div>
-      </div>
-      <div className="col-10 mx-auto col-lg-2">
-        <strong className="d-lg-none">item total : {total}</strong>
-        <strong>Rp. {total}</strong>
       </div>
     </div>
   );
