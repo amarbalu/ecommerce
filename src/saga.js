@@ -1,5 +1,4 @@
 import { all, put, takeLatest, select } from "redux-saga/effects";
-import { push } from "react-router-redux";
 
 import {
   removeItem,
@@ -109,10 +108,9 @@ function* loginApi(email, password) {
     for (let i = 0; i < data.length; i++) {
       if (data[i].email === email && data[i].password === password) {
         if (proceedToCheckout) {
-          yield put(setloginDetails(email, password, !loginModel));
-          yield put(push("/checkout"));
+          yield put(setloginDetails(email, password, true));
         } else {
-          yield put(setloginDetails(email, password, !loginModel));
+          yield put(setloginDetails(email, password, false));
         }
 
         break;

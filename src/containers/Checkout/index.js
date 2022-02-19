@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import CheckoutList from "../../components/CheckoutList";
 
 export default function CartPage() {
   const cart = useSelector((state) => state.cart);
+
   return (
     <section>
       {cart.length ? (

@@ -13,6 +13,7 @@ const initialState = {
   loginErrorMessage: "",
   filters: {},
   proceedToCheckout: false,
+  loginSuccess: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -67,7 +68,7 @@ const reducer = (state = initialState, action) => {
         password: action.password,
         isloggedIn: true,
         loginModal: action.loginModal,
-        proceedToCheckout: false,
+        loginSuccess: action.loginSuccess,
       };
     case "logout_attempt":
       return {
@@ -77,6 +78,12 @@ const reducer = (state = initialState, action) => {
         isloggedIn: false,
       };
 
+    case "clear_proceed_to_checkout":
+      return {
+        ...state,
+        proceedToCheckout: false,
+        loginSuccess: false,
+      };
     default:
       return state;
   }

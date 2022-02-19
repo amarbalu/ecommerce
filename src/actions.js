@@ -49,10 +49,11 @@ const login = (email, password) => ({
   email,
   password,
 });
-const setloginDetails = (email, password) => ({
+const setloginDetails = (email, password, loginSuccess) => ({
   type: "set_login_details",
   email,
   password,
+  loginSuccess,
 });
 const logout = () => ({
   type: "logout_attempt",
@@ -73,7 +74,11 @@ const fetchFilteredResult = (item, value) => ({
   value,
   item,
 });
+const clearProceedToCheckout = () => ({
+  type: "clear_proceed_to_checkout",
+});
 export {
+  clearProceedToCheckout,
   addtocartAction,
   updateQty,
   updateCart,
