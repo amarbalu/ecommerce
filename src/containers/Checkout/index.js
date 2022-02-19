@@ -18,7 +18,8 @@ export default function CartPage() {
           </div>
           <Link to="/">
             <button
-              className="btn btn-outline-danger text-uppercase mb-3 px-5"
+              className="btn 
+               text-uppercase mb-3 px-5"
               type="button"
               onClick={() => dispatch(clearCartItems())}
             >

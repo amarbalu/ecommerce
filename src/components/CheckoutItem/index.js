@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 export default function CheckoutItem({ item, cart }) {
   const { id, title, img, price, total, count } = item;
