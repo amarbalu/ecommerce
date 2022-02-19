@@ -51,8 +51,6 @@ user should be redirected to the home page with the cart cleared.
 
 ## Steps to run
 1.git clone https://github.com/amarbalu/ecommerce.git 
-
 2. npm install
-3. 
-4. npm start
+3. npm start
 
