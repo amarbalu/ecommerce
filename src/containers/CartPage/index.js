@@ -27,7 +27,7 @@ export default function CartPage() {
               <span>Your Cart</span>
             </div>
           </div>
-          <div className=" d-flex justify-content-center justify-content-md-between flex-wrap flex-md-nowrap">
+          <div className=" d-flex r justify-content-between flex-wrap flex-md-nowrap">
             <CartList cart={cart} />
 
             <CartTotal
