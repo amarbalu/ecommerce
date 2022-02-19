@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { clearCartItems, clearProceedToCheckout } from "../../actions";
@@ -18,7 +18,7 @@ export default function CheckoutPage() {
     if (proceedToCheckout && loginSuccess) {
       dispatch(clearProceedToCheckout());
     }
-  }, []);
+  }, [dispatch, proceedToCheckout, loginSuccess]);
   return (
     <CheckoutSection className="container mt-2">
       <div className="row">

@@ -101,10 +101,6 @@ export const storeProducts = [
 
     price: 399,
 
-    color: "Blue",
-    person: "Female",
-    type: "Kurta",
-
     info: "Striped kurta",
     inCart: false,
     count: 0,

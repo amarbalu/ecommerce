@@ -1,6 +1,5 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 import { CartSection } from "./Styles";
-import CartColumn from "../../components/CartColumn";
 import CartList from "../../components/CartList";
 import CartTotal from "../../components/CartTotal";
 import EmptyCart from "../../components/EmptyCart";

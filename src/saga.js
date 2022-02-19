@@ -103,7 +103,7 @@ function* removeItemInCart(id) {
 function* loginApi(email, password) {
   try {
     let proceedToCheckout = yield select((state) => state.proceedToCheckout);
-    let loginModel = yield select((state) => state.loginModel);
+
     const data = loginCredentials;
     for (let i = 0; i < data.length; i++) {
       if (data[i].email === email && data[i].password === password) {

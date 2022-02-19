@@ -9,7 +9,7 @@ import Sidebar from "../../components/SideBar";
  */
 const Homepage = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(fetch_filters()), []);
+  useEffect(() => dispatch(fetch_filters()), [dispatch]);
   return (
     <div className="row container-fluid">
       <div className="d-none d-sm-none d-lg-block  col-lg-2 col-xl-2">

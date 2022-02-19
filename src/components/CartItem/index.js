@@ -20,7 +20,7 @@ const CartItemContainer = styled("div")`
 `;
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
-  const { id, title, img, price, total, count } = item;
+  const { id, title, img, total, count } = item;
 
   return (
     <CartItemContainer className="card d-flex col-11">
