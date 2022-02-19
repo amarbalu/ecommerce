@@ -1,8 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled("nav")`
-  &.navbar {
-    padding: 1rem;
+ 
+  .navbar-toggler {
+    border-color: transparent;
+    .navbar-toggler-icon {
+      height: 1em;
+      width: 1em;
+    }
+  }
+  .navbar-collapse{
+    padding: 1em;
+    padding-top: 0;
+}
   }
   .link {
     text-decoration: none;

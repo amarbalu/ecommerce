@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout, toggleLoginModal } from "../../actions";
+import Sidebar from "../SideBar";
 import { ButtonContainer, Container, Icon } from "./styles";
 const NavBarMenu = () => {
   const count = useSelector((state) => state.count);
@@ -9,6 +10,17 @@ const NavBarMenu = () => {
   return (
     <Container className="navbar navbar-expand-lg navbar-light bg-light px-sm-5 fixed-top">
       <div className="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <Link to="/" className="logo">
           <img
             src={process.env.PUBLIC_URL + "shop.png"}
@@ -52,6 +64,11 @@ const NavBarMenu = () => {
             </Icon>
           </ButtonContainer>
         </Link>
+      </div>
+      <div id="navbarTogglerDemo02" className=" collapse navbar-collapse">
+        <div className="d-block d-lg-none">
+          <Sidebar />
+        </div>
       </div>
     </Container>
   );

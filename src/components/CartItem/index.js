@@ -36,16 +36,30 @@ export default function CartItem({ item, cart }) {
             <input
               type="text"
               value={count}
-              onChange={(e) =>
-                e.target.value &&
-                dispatch(updateQty(id, "manual", e.target.value))
-              }
+              onChange={(e) => {
+                dispatch(updateQty(id, "manual", e.target.value));
+              }}
+              onBlur={(e) => {
+                if (e.target.value) {
+                  dispatch(updateQty(id, "manual", e.target.value));
+                } else {
+                  dispatch(removeItem(id));
+                }
+              }}
               style={{ width: "3rem" }}
             ></input>
           </span>
 
           <span className="btn btn-black mx-1">
-            <button onClick={() => dispatch(updateQty(id, "remove"))}>
+            <button
+              onClick={() => {
+                if (count === 1) {
+                  dispatch(removeItem(id));
+                } else if (count) {
+                  dispatch(updateQty(id, "remove"));
+                }
+              }}
+            >
               <i class="bi bi-cart-dash"></i>
             </button>
           </span>
