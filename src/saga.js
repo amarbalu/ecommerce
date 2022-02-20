@@ -122,6 +122,7 @@ function* updateTotal() {
   try {
     let subtotal = 0;
     const tempCart = yield select((state) => state.cart);
+
     tempCart.map((item) => (subtotal += item.total));
     const tempTax = subtotal * 0.1;
     const tax = parseFloat(tempTax.toFixed(2));

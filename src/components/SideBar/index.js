@@ -22,7 +22,10 @@ const useFilteredMenus = (filters, menu, subMenuAction) => {
                 key={subMenu}
                 className={`menu ${menu === subMenu ? "active" : ""}`}
               >
-                <a href="#" onClick={(e) => subMenuAction(e, item, subMenu)}>
+                <a
+                  href="eval(javascript:void(0))"
+                  onClick={(e) => subMenuAction(e, item, subMenu)}
+                >
                   {subMenu}
                 </a>
               </li>
@@ -54,7 +57,7 @@ const Sidebar = () => {
         <ul className="list-unstyled components">
           <li className={`menu ${menu === "all" ? "active" : ""} head-list`}>
             <a
-              href="#"
+              href="eval(javascript:void(0))"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(selectedMenu("all"));

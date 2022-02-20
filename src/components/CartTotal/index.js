@@ -28,7 +28,7 @@ export default function CartTotal({
           </div>
           <div className="d-flex">
             <div className="col-6">
-              <span>tax</span>
+              <span>Tax</span>
             </div>
             <div className="col-6">
               <strong>Rs. {cartTax}</strong>
@@ -36,7 +36,7 @@ export default function CartTotal({
           </div>
           <div className="d-flex">
             <div className="col-6">
-              <span>total</span>
+              <span>Total</span>
             </div>
             <div className="col-6">
               <strong>Rs. {cartTotal}</strong>

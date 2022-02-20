@@ -20,7 +20,7 @@ const CartItemContainer = styled("div")`
 `;
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
-  const { id, title, img, total, count } = item;
+  const { id, title, img, total, count, price } = item;
 
   return (
     <CartItemContainer className="card d-flex col-11">
@@ -43,7 +43,11 @@ export default function CartItem({ item }) {
                   type="text"
                   value={count}
                   onChange={(e) => {
-                    dispatch(updateQty(id, "manual", e.target.value));
+                    if (/[0-9]/g.test(e.target.value)) {
+                      dispatch(updateQty(id, "manual", e.target.value));
+                    } else if (!e.target.value) {
+                      dispatch(updateQty(id, "manual", ""));
+                    }
                   }}
                   onBlur={(e) => {
                     if (e.target.value) {
@@ -80,7 +84,7 @@ export default function CartItem({ item }) {
             </div>
           </div>
           <div className="col-10  col-lg-6">
-            <strong>Rs. {total}</strong>
+            <strong>Rs. {total ? total : price}</strong>
           </div>
         </div>
       </div>
